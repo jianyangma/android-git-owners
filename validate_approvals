@@ -1,0 +1,12 @@
+#!/bin/bash
+while [[ "$#" -gt 0 ]]; do
+    case $1 in
+        --approvers) approvers="$2"; shift ;;
+        --changed-files) changed="$2"; shift ;;
+        *) echo "Unknown parameter passed: $1"; exit 1 ;;
+    esac
+    shift
+done
+
+javac -cp libs/commons-collections4-4.4.jar Validate.java Helper.java
+java -cp .:libs/commons-collections4-4.4.jar Validate $approvers $changed

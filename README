@@ -1,0 +1,18 @@
+To run from cmd line:
+run shell script validate_approvals --approvers <names> --changed-files <files>
+
+e.g:
+sh validate_approvals --approvers alovelace,ghopper --changed-files src/com/twitter/follow/Follow.java,src/com/twitter/user/User.java
+
+Files:
+Validate.java: contains main logic for validating approvals
+Helper.java: helper class for maintaining owner and dependency properties
+TestSuite.java: Junit test suite class
+TestValidate.java: Individual test cases
+
+To run tests from cmd line:
+javac -cp libs/junit-4.13.2.jar:libs/commons-collections4-4.4.jar:libs/hamcrest-core-1.3.jar TestValidate.java Validate.java Helper.java
+java -cp .:libs/junit-4.13.2.jar:libs/commons-collections4-4.4.jar:libs/hamcrest-core-1.3.jar org.junit.runner.JUnitCore TestValidate
+
+Jenkins:
+Included video of local jenkins server kicking off Junit tests
